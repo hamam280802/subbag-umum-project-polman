@@ -25,35 +25,12 @@ export default async function Dashboard() {
             </div>
             <div className="mx-5 my-5 overflow-y-auto bg-gray-100 rounded-xl shadow-inner h-[40%]">
                 <ul className="p-4 space-y-3">{
-                    cals?.map((calevent: {title: string, start: Date, end: Date}) => (
-                        <li className="flex space-x-4 p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg">
+                    cals?.map((calevent: {title: string, start: Date, end: Date, id: Number}) => (
+                        <li key={`${calevent.id}`} className="flex space-x-4 p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg">
                             <p>{calevent.title}:</p><p>{formatDateTime(calevent.start)} - {formatDateTime(calevent.end)}</p>
                         </li>
                     ))
                 }</ul>
-            </div>
-            <div className="flex justify-between py-10 px-10 border-t-2 shadow-inner">
-                <a href="/view/kepegawaian" className="hover:bg-gray-100 hover:shadow-lg rounded-lg p-3 pb-10 transition ease-in-out hover:-translate-y-1 hover:scale-110"><div>
-                    <img src="../icons/EmployeeIcon.svg" className="h-60 w-60" alt="Kepegawaian"/>
-                    <p className="text-2xl text-center font-semibold">Fungsi</p>
-                    <p className="text-2xl text-center font-semibold">Kepegawaian</p>
-                </div></a>
-                <a href="/view/keuangan" className="hover:bg-gray-100 hover:shadow-lg rounded-lg p-3 pb-10 transition ease-in-out hover:-translate-y-1 hover:scale-110"><div>
-                    <img src="../icons/MoneyIcon.svg" className="h-60 w-60" alt="Kepegawaian"/>
-                    <p className="text-2xl text-center font-semibold">Fungsi</p>
-                    <p className="text-2xl text-center font-semibold">Keuangan</p>
-                </div></a>
-                <a href="/view/perencanaan-anggaran" className="hover:bg-gray-100 hover:shadow-lg rounded-lg p-3 pb-10 transition ease-in-out hover:-translate-y-1 hover:scale-110"><div>
-                    <img src="../icons/PlanIcon.svg" className="h-60 w-60" alt="Kepegawaian"/>
-                    <p className="text-2xl text-center font-semibold">Fungsi</p>
-                    <p className="text-2xl text-center font-semibold">Perencanaan</p>
-                    <p className="text-2xl text-center font-semibold">Anggaran</p>
-                </div></a>
-                <a href="/view/umum" className="hover:bg-gray-100 hover:shadow-lg rounded-lg p-3 pb-10 transition ease-in-out hover:-translate-y-1 hover:scale-110"><div>
-                    <img src="../icons/PublicIcon.svg" className="h-60 w-60" alt="Kepegawaian"/>
-                    <p className="text-2xl text-center font-semibold">Fungsi</p>
-                    <p className="text-2xl text-center font-semibold">Umum</p>
-                </div></a>
             </div>
         </main>
     </div>

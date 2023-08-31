@@ -69,7 +69,7 @@ export default function DeletePegawai(linkpegawai: ItemKepegawaian) {
                                         </Dialog.Title>
                                         <div className="mt-2">
                                             <p className="text-sm text-gray-500">
-                                                Anda ingin menghapus link "<a href={linkpegawai.link}>{linkpegawai.title}</a>"?
+                                                Anda ingin menghapus link &quot;<a href={linkpegawai.link}>{linkpegawai.title}</a>&quot;?
                                             </p>
                                         </div>
                                     </div>

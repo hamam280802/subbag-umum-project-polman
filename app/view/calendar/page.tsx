@@ -207,7 +207,7 @@ export default function Calendar() {
                           </Dialog.Title>
                           <div className="mt-2">
                             <p className="text-sm text-gray-500">
-                              Anda ingin menghapus jadwal "{titleToDelete}"?
+                              Anda ingin menghapus jadwal &quot;{titleToDelete}&quot;?
                             </p>
                           </div>
                         </div>

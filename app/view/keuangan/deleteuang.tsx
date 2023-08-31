@@ -22,9 +22,7 @@ export default function DeleteUang(linkuang: ItemKeuangan) {
         const res = await fetch(`http://localhost:3000/api/mons?id=${linkuang?._id}`,{
             method: "DELETE",
         });
-        if(res.ok){
-            router.refresh();
-        }
+        router.refresh();
     }
 
   return (
@@ -71,7 +69,7 @@ export default function DeleteUang(linkuang: ItemKeuangan) {
                                         </Dialog.Title>
                                         <div className="mt-2">
                                             <p className="text-sm text-gray-500">
-                                                Anda ingin menghapus link "<a href={linkuang.link}>{linkuang.title}</a>"?
+                                                Anda ingin menghapus link &quot;<a href={linkuang.link}>{linkuang.title}</a>&quot;?
                                             </p>
                                         </div>
                                     </div>

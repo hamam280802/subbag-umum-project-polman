@@ -22,9 +22,7 @@ export default function DeletePegawai(linkumum: ItemUmum) {
         const res = await fetch(`http://localhost:3000/api/pubs?id=${linkumum?._id}`,{
             method: "DELETE",
         });
-        if(res.ok){
-            router.refresh();
-        }
+        router.refresh();
     }
 
   return (
@@ -71,7 +69,7 @@ export default function DeletePegawai(linkumum: ItemUmum) {
                                         </Dialog.Title>
                                         <div className="mt-2">
                                             <p className="text-sm text-gray-500">
-                                                Anda ingin menghapus link "<a href={linkumum.link}>{linkumum.title}</a>"?
+                                                Anda ingin menghapus link &quot;<a href={linkumum.link}>{linkumum.title}</a>&quot;?
                                             </p>
                                         </div>
                                     </div>

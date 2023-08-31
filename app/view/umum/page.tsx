@@ -1,6 +1,7 @@
 import Header from "../header/page";
 import AddUmum from "./addumum";
 import DeleteUMum from "./deleteumum";
+import Image from "next/image";
 
 async function getPublic() {
     try {
@@ -28,16 +29,16 @@ export default async function Umum() {
                 <div className="space-x-2 flex items-center mb-5">
                     <p className="text-2xl font-semibold">Fungsi Umum</p>
                     <AddUmum/>
-                    <a href="/" className="fixed bottom-5 right-6 bg-blue-500 text-white py-2 px-6 rounded-md font-semibold text-lg transition ease-in-out hover:-translate-y-1 hover:scale-110"><img src="../../icons/home.png/" alt="Beranda" className="h-8 w-8"/></a>
+                    <a href="/" className="fixed bottom-5 right-6 bg-blue-500 text-white py-2 px-6 rounded-md font-semibold text-lg transition ease-in-out hover:-translate-y-1 hover:scale-110"><Image src="../../icons/home.png/" alt="Beranda" className="h-8 w-8"/></a>
                 </div>
                     <div className="overflow-y-auto bg-gray-100 rounded-xl shadow-inner h-[90%]">
                         <ul className="p-4">{
-                            pubs?.map((linkpub:{title: string, link:string, _id:number}) => (
-                                <div className="flex justify-between">
-                                    <a href={linkpub.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
-                                        <p>{linkpub.title}</p>
+                            pubs?.map((linkpubs:{title: string, link:string, _id:number, id:number}) => (
+                                <div key={`${linkpubs.id}`} className="flex justify-between">
+                                    <a href={linkpubs.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
+                                        <p>{linkpubs.title}</p>
                                     </li></a>
-                                    <DeleteUMum {...linkpub}/>
+                                    <DeleteUMum {...linkpubs}/>
                                 </div>
                             ))
                         }</ul>

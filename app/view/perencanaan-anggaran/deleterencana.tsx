@@ -22,9 +22,7 @@ export default function DeleteRencana(linkrencana: ItemPerencanaan) {
         const res = await fetch(`http://localhost:3000/api/mans?id=${linkrencana?._id}`,{
             method: "DELETE",
         });
-        if(res.ok){
-            router.refresh();
-        }
+        router.refresh();
     }
 
   return (
@@ -71,7 +69,7 @@ export default function DeleteRencana(linkrencana: ItemPerencanaan) {
                                         </Dialog.Title>
                                         <div className="mt-2">
                                             <p className="text-sm text-gray-500">
-                                                Anda ingin menghapus link "<a href={linkrencana.link}>{linkrencana.title}</a>"?
+                                                Anda ingin menghapus link &quot;<a href={linkrencana.link}>{linkrencana.title}</a>&quot;?
                                             </p>
                                         </div>
                                     </div>
