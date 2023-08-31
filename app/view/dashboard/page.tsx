@@ -6,12 +6,14 @@ async function getCalendar() {
         const res = await fetch('http://localhost:3000/api/cals', {cache: "no-store"});
 
         if (!res.ok) {
-            return new Error("Gagal terhubung ke database")
+            throw new Error("Gagal terhubung ke database")
         }
 
-        return res.json();
+        const data = await res.json();
+        return data;
     } catch (error) {
         console.log("Error memuat database: ", error);
+        return null;
     }
 }
 
