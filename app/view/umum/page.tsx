@@ -4,7 +4,7 @@ import DeleteUMum from "./deleteumum";
 
 async function getPublic() {
     try {
-        const res = await fetch('http://efeksi.vercel.app/api/pubs', {cache: "no-store"});
+        const res = await fetch('http://efeksi-git-master-hamam28.vercel.app/api/pubs', {cache: "no-store"});
 
         if (!res.ok) {
             return new Error("Gagal terhubung ke database")
