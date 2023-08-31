@@ -4,7 +4,7 @@ import DeleteUang from "./deleteuang";
 
 async function getMoney() {
     try {
-        const res = await fetch('http://localhost:3000/api/mons', {cache: "no-store"});
+        const res = await fetch('http://efeksi.vercel.app/api/mons', {cache: "no-store"});
 
         if (!res.ok) {
             return new Error("Gagal terhubung ke database")

@@ -4,7 +4,7 @@ import DeleteRencana from "./deleterencana";
 
 async function getManagement() {
     try {
-        const res = await fetch('http://localhost:3000/api/mans', {cache: "no-store"});
+        const res = await fetch('http://efeksi.vercel.app/api/mans', {cache: "no-store"});
 
         if (!res.ok) {
             return new Error("Gagal terhubung ke database")

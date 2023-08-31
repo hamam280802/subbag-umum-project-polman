@@ -16,7 +16,7 @@ export default function AddManagement() {
         setIsMutating(false);
         setModal(false);
         try {
-            const res = await fetch("http://localhost:3000/api/mans", {
+            const res = await fetch("http://efeksi.vercel.app/api/mans", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",

@@ -4,7 +4,7 @@ import DeletePegawai from "./deletepegawai";
 
 async function getEmployee() {
     try {
-        const res = await fetch('http://localhost:3000/api/emps', {cache: "no-store"});
+        const res = await fetch('http://efeksi.vercel.app/api/emps', {cache: "no-store"});
 
         if (!res.ok) {
             return new Error("Gagal terhubung ke database")

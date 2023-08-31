@@ -19,7 +19,7 @@ export default function DeleteUang(linkuang: ItemKeuangan) {
     async function handleDelete() {
         setIsMutating(false);
         setModal(false);
-        const res = await fetch(`http://localhost:3000/api/mons?id=${linkuang?._id}`,{
+        const res = await fetch(`http://efeksi.vercel.app/api/mons?id=${linkuang?._id}`,{
             method: "DELETE",
         });
         router.refresh();

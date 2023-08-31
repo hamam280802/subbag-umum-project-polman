@@ -61,7 +61,7 @@ export default function Calendar() {
     cals?.map(async (eventcal:{id: number, _id: number}) => (
       eventcal.id == idToDelete
       ?
-      await fetch(`http://localhost:3000/api/cals?id=${eventcal?._id}`,{
+      await fetch(`http://127.0.0.1:3000/api/cals?id=${eventcal?._id}`,{
           method: "DELETE",
       })
       :
@@ -96,7 +96,7 @@ export default function Calendar() {
   async function handleSubmit(e: SyntheticEvent) {
     e.preventDefault()
     try {
-        const res = await fetch("http://localhost:3000/api/cals", {
+        const res = await fetch("http://127.0.0.1:3000/api/cals", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -123,15 +123,17 @@ export default function Calendar() {
 
   async function getCalendar() {
       try {
-          const res = await fetch('http://localhost:3000/api/cals', {cache: "no-store"});
+          const res = await fetch('http://efeksi.vercel.app/api/cals', {cache: "no-store"});
 
           if (!res.ok) {
-              return new Error("Gagal terhubung ke database")
+              throw new Error("Gagal terhubung ke database")
           }
 
-          return res.json();
+          const data = await res.json();
+          return data;
       } catch (error) {
           console.log("Error memuat database: ", error);
+          return null
       }
   }
 

@@ -16,7 +16,7 @@ export default function AddUang() {
         setIsMutating(false);
         setModal(false);
         try {
-            const res = await fetch("http://localhost:3000/api/mons", {
+            const res = await fetch("http://efeksi.vercel.app/api/mons", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",

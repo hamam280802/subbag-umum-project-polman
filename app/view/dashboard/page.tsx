@@ -3,7 +3,7 @@ import ImageEl from "./imageEl";
 
 async function getCalendar() {
     try {
-        const res = await fetch('http://localhost:3000/api/cals', {cache: "no-store"});
+        const res = await fetch('http://efeksi.vercel.app/api/cals', {cache: "no-store"});
 
         if (!res.ok) {
             throw new Error("Gagal terhubung ke database")
