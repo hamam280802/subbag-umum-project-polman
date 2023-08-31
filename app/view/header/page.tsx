@@ -18,6 +18,11 @@ export default function Header({title}:any) {
                 </ul>
             </div>
         </header>
+        {title === "kepegawaian" || title === "keuangan" || title === "perencanaan-anggaran" || title === "umum" ? (
+          <a href="/" className="fixed bottom-5 right-6 bg-blue-500 text-white py-2 px-6 rounded-md font-semibold text-lg transition ease-in-out hover:-translate-y-1 hover:scale-110 z-10"><Image width={30} height={30} src="/icons/home.png" alt="Beranda"/></a>
+        ) : (
+          <></>
+        )}
     </div>
   )
 }

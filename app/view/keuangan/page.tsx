@@ -1,7 +1,6 @@
 import Header from "../header/page";
 import AddUang from "./adduang";
 import DeleteUang from "./deleteuang";
-import Image from "next/image";
 
 async function getMoney() {
     try {
@@ -29,7 +28,6 @@ export default async function Keuangan() {
                 <div className="space-x-2 flex items-center mb-5">
                     <p className="text-2xl font-semibold">Fungsi Keuangan</p>
                     <AddUang/>
-                    <a href="/" className="fixed bottom-5 right-6 bg-blue-500 text-white py-2 px-6 rounded-md font-semibold text-lg transition ease-in-out hover:-translate-y-1 hover:scale-110"><Image width={30} height={30} src="/icons/home.png" alt="Beranda"/></a>
                 </div>
                     <div className="overflow-y-auto bg-gray-100 rounded-xl shadow-inner h-[90%]">
                         <ul className="p-4">{
