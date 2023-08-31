@@ -61,7 +61,7 @@ export default function Calendar() {
     cals?.map(async (eventcal:{id: number, _id: number}) => (
       eventcal.id == idToDelete
       ?
-      await fetch(`http://127.0.0.1:3000/api/cals?id=${eventcal?._id}`,{
+      await fetch(`http://efeksi.vercel.app/api/cals?id=${eventcal?._id}`,{
           method: "DELETE",
       })
       :
@@ -96,7 +96,7 @@ export default function Calendar() {
   async function handleSubmit(e: SyntheticEvent) {
     e.preventDefault()
     try {
-        const res = await fetch("http://127.0.0.1:3000/api/cals", {
+        const res = await fetch("http://efeksi.vercel.app/api/cals", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
