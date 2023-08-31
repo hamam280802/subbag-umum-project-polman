@@ -1,4 +1,5 @@
 import Header from "../header/page";
+import ImageEl from "./imageEl";
 
 async function getCalendar() {
     try {
@@ -32,6 +33,7 @@ export default async function Dashboard() {
                     ))
                 }</ul>
             </div>
+            <ImageEl/>
         </main>
     </div>
   )
