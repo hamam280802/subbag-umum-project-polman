@@ -1,0 +1,62 @@
+{
+  "Kepegawaian": [
+    {
+      "id": 1,
+      "title": "PERATURAN (Tukin, AK, dll)",
+      "link": "https://drive.google.com/drive/folders/1TmBQA__VjRXGkSc-QGXcGInv0tr2tLN4?usp=sharing"
+    },
+    {
+      "id": 2,
+      "title": "MASTER PEGAWAI",
+      "link": "https://drive.google.com/drive/folders/1D-6ysa8mSLns82rBelCOACi9QfDBkUzC?usp=share_link"
+    },
+    {
+      "title": "Tanya Jawab Topik Kepegawaian",
+      "link": "https://docs.google.com/spreadsheets/d/1wjcou7EPTK06eRP4ri2oyXxz7ER3x9V7/edit?usp=sharing&ouid=110984822398362806184&rtpof=true&sd=true",
+      "id": 3
+    }
+  ],
+  "Keuangan": [
+    {
+      "id": 1,
+      "title": "Keuangan1",
+      "link": "linkkeuangan1"
+    },
+    {
+      "id": 2,
+      "title": "Keuangan2",
+      "link": "linkekuangan2"
+    }
+  ],
+  "Rencana-Anggaran": [
+    {
+      "title": "Anggaran2",
+      "link": "link2",
+      "id": 2
+    },
+    {
+      "title": "anggaran1",
+      "link": "555555",
+      "id": 3
+    }
+  ],
+  "Umum": [
+    {
+      "id": 1,
+      "title": "Umum1",
+      "link": "link1"
+    },
+    {
+      "title": "Umum2",
+      "link": "publiklink",
+      "id": 2
+    }
+  ],
+  "EditStuff": [
+    {
+      "id": 123,
+      "code": "editberkas7605",
+      "confirm": false
+    }
+  ]
+}
