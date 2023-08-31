@@ -19,7 +19,7 @@ export default function DeletePegawai(linkumum: ItemUmum) {
     async function handleDelete() {
         setIsMutating(false);
         setModal(false);
-        const res = await fetch(`http://efeksi.vercel.app/api/pubs?id=${linkumum?._id}`,{
+        const res = await fetch(`http://efeksi-git-master-hamam28.vercel.app/api/pubs?id=${linkumum?._id}`,{
             method: "DELETE",
         });
         router.refresh();
