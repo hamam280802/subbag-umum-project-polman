@@ -19,7 +19,7 @@ export default function DeletePegawai(linkpegawai: ItemKepegawaian) {
     async function handleDelete() {
         setIsMutating(false);
         setModal(false);
-        const res = await fetch(`http://efeksi.vercel.app/api/emps?id=${linkpegawai?._id}`,{
+        const res = await fetch(`http://efeksi-git-master-hamam28.vercel.app/api/emps?id=${linkpegawai?._id}`,{
             method: "DELETE",
         });
         router.refresh();
