@@ -19,7 +19,7 @@ export default function DeleteRencana(linkrencana: ItemPerencanaan) {
     async function handleDelete() {
         setIsMutating(false);
         setModal(false);
-        const res = await fetch(`http://efeksi.vercel.app/api/mans?id=${linkrencana?._id}`,{
+        const res = await fetch(`http://efeksi-git-master-hamam28.vercel.app/api/mans?id=${linkrencana?._id}`,{
             method: "DELETE",
         });
         router.refresh();
