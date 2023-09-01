@@ -96,7 +96,7 @@ export default function Calendar() {
   async function handleSubmit(e: SyntheticEvent) {
     e.preventDefault()
     try {
-        const res = await fetch("http://efeksibps.netlify.app/api/cals", {
+        const res = await fetch("http://efeksi.vercel.app/api/cals", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
@@ -123,7 +123,7 @@ export default function Calendar() {
 
   async function getCalendar() {
       try {
-          const res = await fetch('http://efeksibps.netlify.app/api/cals', {cache: "no-store"});
+          const res = await fetch('http://efeksi.vercel.app/api/cals', {cache: "no-store"});
 
           if (!res.ok) {
               throw new Error("Gagal terhubung ke database")
