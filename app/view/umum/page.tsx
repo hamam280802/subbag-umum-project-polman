@@ -35,10 +35,10 @@ export default function Umum() {
                     <p className="text-2xl font-semibold">Fungsi Umum</p>
                     <AddUmum/>
                 </div>
-                    <div className="overflow-y-auto bg-gray-100 rounded-xl shadow-inner h-[90%]">
+                    <div className="overflow-y-auto bg-gray-100 rounded-xl shadow-inner h-5/6 border-2">
                         <ul className="p-4">{
                             data.map((linkpubs:{title: string, link:string, _id:number, id:number}) => (
-                                <div key={`${linkpubs.id}`} className="flex justify-between">
+                                <div key={`${linkpubs._id}`} className="flex justify-between">
                                     <a href={linkpubs.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
                                         <p>{linkpubs.title}</p>
                                     </li></a>

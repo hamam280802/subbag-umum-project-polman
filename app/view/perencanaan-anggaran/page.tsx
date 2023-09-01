@@ -35,10 +35,10 @@ export default function Perencanaan_Anggaran() {
                     <p className="text-2xl font-semibold">Fungsi Perencanaan Anggaran</p>
                     <AddRencana/>
                 </div>
-                    <div className="overflow-y-auto bg-gray-100 rounded-xl shadow-inner h-[90%]">
+                    <div className="overflow-y-auto bg-gray-100 rounded-xl shadow-inner h-5/6 border-2">
                         <ul className="p-4">{
                             data.map((linkmans:{title: string, link:string, _id:number, id:number}) => (
-                                <div key={`${linkmans.id}`} className="flex justify-between">
+                                <div key={`${linkmans._id}`} className="flex justify-between">
                                     <a href={linkmans.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
                                         <p>{linkmans.title}</p>
                                     </li></a>
