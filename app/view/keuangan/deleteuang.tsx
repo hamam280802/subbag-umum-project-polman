@@ -1,8 +1,9 @@
 'use client';
 
-import { Fragment, useState, SyntheticEvent } from "react";
+import { Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Dialog, Transition } from '@headlessui/react'
+import axios from 'axios';
 
 type ItemKeuangan = {
     _id: number;
@@ -17,12 +18,20 @@ export default function DeleteUang(linkuang: ItemKeuangan) {
     const router = useRouter();
     
     async function handleDelete() {
-        setIsMutating(false);
-        setModal(false);
-        const res = await fetch(`http://efeksibps.netlify.app/api/mons?id=${linkuang?._id}`,{
-            method: "DELETE",
-        });
+        setIsMutating(true);
+        try {
+            const res = await axios.delete(`/api/mons?id=${linkuang._id}`);
+            if (res.status !== 200){
+                throw new Error('Gagal mengahpus list')
+            }
+        } catch (error) {
+            console.log("Error memuat database: ", error)
+            return null
+        }
         router.refresh();
+        setModal(false);
+        setIsMutating(false);
+        location.reload();
     }
 
   return (

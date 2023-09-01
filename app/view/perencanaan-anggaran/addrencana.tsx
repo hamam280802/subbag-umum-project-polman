@@ -3,6 +3,7 @@
 import { Fragment, useState, SyntheticEvent } from "react";
 import { useRouter } from "next/navigation";
 import { Dialog, Transition } from '@headlessui/react'
+import axios from 'axios';
 
 export default function AddManagement() {
     const [modal, setModal] = useState(false)
@@ -13,26 +14,24 @@ export default function AddManagement() {
 
     async function handleSubmit(e: SyntheticEvent) {
         e.preventDefault();
-        setIsMutating(false);
-        setModal(false);
+        setIsMutating(true);
         try {
-            const res = await fetch("http://efeksibps.netlify.app/api/mans", {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json",
-                },
-                body: JSON.stringify({title, link}),
-            });
+            const data = {title, link}
+            const res = await axios.post("/api/mans", data);
 
-            if(!res.ok){
+            if(res.status !== 201){
                 throw new Error("Gagal membuat list");
             }
         } catch (error) {
-            
+            console.log("Error memuat database: ", error)
+            return null
         }
         router.refresh();
+        setModal(false);
+        setIsMutating(false)
         setTitle("");
         setLink("");
+        location.reload();
     };
 
   return (
@@ -80,7 +79,7 @@ export default function AddManagement() {
                                                 {!isMutating ? (
                                                     <button disabled={title === '' || link === ''} type="submit" className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-md hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:col-start-2 disabled:opacity-25">Input</button>
                                                 ) : (
-                                                    <button disabled className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-md hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:col-start-2 disabled:opacity-25">Memuat...</button>
+                                                    <button disabled className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-md hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:col-start-2">Memuat...</button>
                                                 )}
                                                 <button type="button" onClick={()=>{setModal(false); setTitle(""); setLink("");}} className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0">Batal</button>
                                             </div>

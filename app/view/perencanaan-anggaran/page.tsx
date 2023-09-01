@@ -1,23 +1,29 @@
+'use client'
+
 import Header from "../header/page";
 import AddRencana from "./addrencana";
 import DeleteRencana from "./deleterencana";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-async function getManagement() {
-    try {
-        const res = await fetch('http://efeksibps.netlify.app/api/mans', {cache: "no-store"});
+export default function Perencanaan_Anggaran() {
+    const [data, setData] = useState([]);
 
-        if (!res.ok) {
-            return new Error("Gagal terhubung ke database")
+    useEffect(()=>{
+        async function getManagement() {
+            try {
+                const res = await axios.get('/api/mans', { headers: { 'Cache-Control': 'no-store' } });
+                const fullData = res.data;
+                if (res.status !== 200) {
+                    return new Error("Gagal terhubung ke database")
+                }
+                setData(fullData.mans)
+            } catch (error) {
+                console.log("Error memuat database: ", error);
+            }
         }
-
-        return res.json();
-    } catch (error) {
-        console.log("Error memuat database: ", error);
-    }
-}
-
-export default async function Perencanaan_Anggaran() {
-    const {mans} = await getManagement();
+        getManagement();
+    }, [])
 
     return (
         <div>
@@ -31,7 +37,7 @@ export default async function Perencanaan_Anggaran() {
                 </div>
                     <div className="overflow-y-auto bg-gray-100 rounded-xl shadow-inner h-[90%]">
                         <ul className="p-4">{
-                            mans?.map((linkmans:{title: string, link:string, _id:number, id:number}) => (
+                            data.map((linkmans:{title: string, link:string, _id:number, id:number}) => (
                                 <div key={`${linkmans.id}`} className="flex justify-between">
                                     <a href={linkmans.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
                                         <p>{linkmans.title}</p>

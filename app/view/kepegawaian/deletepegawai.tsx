@@ -3,6 +3,7 @@
 import { Fragment, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Dialog, Transition } from '@headlessui/react'
+import axios from "axios";
 
 type ItemKepegawaian = {
     _id: number;
@@ -17,12 +18,20 @@ export default function DeletePegawai(linkpegawai: ItemKepegawaian) {
     const router = useRouter();
 
     async function handleDelete() {
-        setIsMutating(false);
-        setModal(false);
-        const res = await fetch(`http://efeksibps.netlify.app/api/emps?id=${linkpegawai?._id}`,{
-            method: "DELETE",
-        });
+        setIsMutating(true);
+        try {
+            const res = await axios.delete(`/api/emps?id=${linkpegawai._id}`);
+            if (res.status !== 200){
+                throw new Error('Gagal mengahpus list')
+            }
+        } catch (error) {
+            console.log("Error memuat database: ", error)
+            return null
+        }
         router.refresh();
+        setModal(false);
+        setIsMutating(false);
+        location.reload();
     }
 
   return (

@@ -1,23 +1,29 @@
+'use client'
+
 import Header from "../header/page";
 import AddUang from "./adduang";
 import DeleteUang from "./deleteuang";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-async function getMoney() {
-    try {
-        const res = await fetch('http://efeksibps.netlify.app/api/mons', {cache: "no-store"});
+export default function Keuangan() {
+    const [data, setData] = useState([]);
 
-        if (!res.ok) {
-            return new Error("Gagal terhubung ke database")
+    useEffect(()=>{
+        async function getMoney() {
+            try {
+                const res = await axios.get('/api/mons', { headers: { 'Cache-Control': 'no-store' } });
+                const fullData = res.data;
+                if (res.status !== 200) {
+                    return new Error("Gagal terhubung ke database")
+                }
+                setData(fullData.mons)
+            } catch (error) {
+                console.log("Error memuat database: ", error);
+            }
         }
-
-        return res.json();
-    } catch (error) {
-        console.log("Error memuat database: ", error);
-    }
-}
-
-export default async function Keuangan() {
-    const {mons} = await getMoney();
+        getMoney();
+    }, [])
 
     return (
         <div>
@@ -31,7 +37,7 @@ export default async function Keuangan() {
                 </div>
                     <div className="overflow-y-auto bg-gray-100 rounded-xl shadow-inner h-[90%]">
                         <ul className="p-4">{
-                            mons?.map((linkmons:{title: string, link:string, _id:number, id:number}) => (
+                            data.map((linkmons:{title: string, link:string, _id:number, id:number}) => (
                                 <div key={`${linkmons.id}`} className="flex justify-between">
                                     <a href={linkmons.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
                                         <p>{linkmons.title}</p>

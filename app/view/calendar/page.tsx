@@ -3,8 +3,9 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import timeGridPlugin from '@fullcalendar/timegrid'
-import { Fragment, SyntheticEvent, useState } from 'react'
+import { Fragment, SyntheticEvent, useState, useEffect } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
+import axios from 'axios'
 import Datetime from "react-datetime";
 import 'react-datetime/css/react-datetime.css';
 
@@ -41,6 +42,24 @@ export default function Calendar() {
   const [allDay, setAllDay] = useState(false);
   const [id, setId] = useState(0);
   const [open, setOpen] = useState(false);
+  const [data, setData] = useState([]);
+
+  useEffect(()=>{
+    async function getCalendar() {
+        try {
+            const res = await axios.get('/api/cals', { headers: { 'Cache-Control': 'no-store' } });
+            const fullData = res.data;
+            if (res.status !== 200) {
+                throw new Error("Gagal terhubung ke database")
+            }
+            setData(fullData.cals);
+        } catch (error) {
+            console.log("Error memuat database: ", error);
+            return null
+        }
+    }
+    getCalendar();
+  }, [])
 
   function handleDateClick(arg: { date: Date, allDay: boolean }) {
     setNewEvent({ ...newEvent, start: arg.date, allDay: arg.allDay, id: new Date().getTime() })
@@ -56,20 +75,25 @@ export default function Calendar() {
     setTitleToDelete(data.event.title)
   }
 
-  async function handleDelete() {
-    const { cals } = await getCalendar();
-    cals?.map(async (eventcal:{id: number, _id: number}) => (
-      eventcal.id == idToDelete
-      ?
-      await fetch(`http://efeksibps.netlify.app/api/cals?id=${eventcal?._id}`,{
-          method: "DELETE",
-      })
-      :
-      ''
+  async function repeat(){
+    data.map((eventcal:{id: number, _id:number})=>(
+      eventcal.id === idToDelete ? handleDelete(eventcal._id) : ''
     ))
     setShowDeleteModal(false)
     setIdToDelete(null)
-    location.reload()
+    location.reload();
+  }
+
+  async function handleDelete(id: number) {
+    try {
+      const res = await axios.delete(`/api/cals?id=${id}`, { headers: { 'Cache-Control': 'no-store' } })
+      if (res.status !== 200){
+        throw new Error('Gagal menghapus list')
+      }
+    } catch (error) {
+      console.log("Error memuat database: ", error);
+      return null
+    }
   }
 
   function handleCloseModal() {
@@ -96,19 +120,15 @@ export default function Calendar() {
   async function handleSubmit(e: SyntheticEvent) {
     e.preventDefault()
     try {
-        const res = await fetch("http://efeksibps.netlify.app/api/cals", {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: JSON.stringify({title, start, end, allDay, id}),
-        });
+        const data = {title, start, end, allDay, id}
+        const res = await axios.post("/api/cals", data, { headers: { 'Cache-Control': 'no-store' } });
 
-        if(!res.ok){
+        if(res.status !== 201){
             throw new Error("Gagal membuat list");
         }
     } catch (error) {
-        
+        console.log("Error memuat database: ", error);
+        return null
     }
       setShowModal(false)
       setNewEvent({
@@ -118,31 +138,8 @@ export default function Calendar() {
         allDay: false,
         id: 0
       })
-      location.reload()
+      location.reload();
     }
-
-  async function getCalendar() {
-      try {
-          const res = await fetch('http://efeksibps.netlify.app/api/cals', {cache: "no-store"});
-
-          if (!res.ok) {
-              throw new Error("Gagal terhubung ke database")
-          }
-
-          const data = await res.json();
-          return data;
-      } catch (error) {
-          console.log("Error memuat database: ", error);
-          return null
-      }
-  }
-
-  async function myNonAsyncFunction() {
-    const { cals } = await getCalendar();
-    return cals?.map((eventcal:{title: string, start: Date, end: Date, allDay: boolean, id: number}) => (
-      { title: eventcal.title, start: eventcal.start, end: eventcal.end, allDay: eventcal.allDay, id: eventcal.id}
-    ))
-  }
 
   return (
     <>
@@ -160,13 +157,13 @@ export default function Calendar() {
                 center: 'title',
                 right: 'timeGridWeek,dayGridMonth'
               }}
+              events={data}
               initialView='timeGridWeek'
               nowIndicator={true}
               selectable={true}
               selectMirror={true}
               dateClick={handleDateClick}
               eventClick={(data) => handleDeleteModal(data)}
-              initialEvents={myNonAsyncFunction}
             />
           </div>
         </div>
@@ -217,7 +214,7 @@ export default function Calendar() {
                     </div>
                     <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                       <button type="button" className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm 
-                      font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" onClick={handleDelete}>
+                      font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto" onClick={repeat}>
                         Hapus
                       </button>
                       <button type="button" className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 
