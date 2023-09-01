@@ -16,7 +16,7 @@ export default function AddUmum() {
         setIsMutating(false);
         setModal(false);
         try {
-            const res = await fetch("http://efeksi.vercel.app/api/pubs", {
+            const res = await fetch("http://efeksibps.netlify.app/api/pubs", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",

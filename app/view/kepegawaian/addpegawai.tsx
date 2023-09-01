@@ -16,7 +16,7 @@ export default function AddPegawai() {
         setIsMutating(false);
         setModal(false);
         try {
-            const res = await fetch("http://efeksi.vercel.app/api/emps", {
+            const res = await fetch("http://efeksibps.netlify.app/api/emps", {
                 method: "POST",
                 headers: {
                     "Content-type": "application/json",
