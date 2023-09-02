@@ -1,9 +1,10 @@
 'use client';
 
+import UpdateUang from "./updateuang";
 import { Fragment, useState } from "react";
-import { useRouter } from "next/navigation";
 import { Dialog, Transition } from '@headlessui/react'
 import axios from 'axios';
+import Image from "next/image";
 
 type ItemKeuangan = {
     _id: number;
@@ -15,7 +16,6 @@ export default function DeleteUang(linkuang: ItemKeuangan) {
     const [modal, setModal] = useState(false)
     const [btn, setBtn] = useState(false)
     const [isMutating, setIsMutating] = useState(false);
-    const router = useRouter();
     
     async function handleDelete() {
         setIsMutating(true);
@@ -28,21 +28,23 @@ export default function DeleteUang(linkuang: ItemKeuangan) {
             console.log("Error memuat database: ", error)
             return null
         }
-        router.refresh();
         setModal(false);
         setIsMutating(false);
         location.reload();
     }
 
   return (
-    <div>
+    <div onMouseLeave={()=>setBtn(false)}>
         <button type="button" onClick={()=>setBtn(true)} className={btn ? 'hidden' : 'mt-3'}>
             <svg width="20px" height="20px" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
             </svg>
         </button>
-        <div onMouseOut={()=>setBtn(false)} className={btn ? '' : 'hidden'}>
-            <button type="button" onClick={()=>setModal(true)} className="py-2 mb-2 px-4 bg-red-500 rounded-lg font-semibold text-xl border shadow-lg hover:text-white hover:bg-red-700">X</button>
+        <div onClick={()=>setBtn(false)} className={btn ? 'flex' : 'hidden'}>
+            <UpdateUang {...linkuang}/>
+            <button type="button" onClick={()=>setModal(true)} className="mb-2 rounded-full border shadow-lg hover:opacity-80">
+                <Image width={50} height={50} src="/icons/remove.png" alt="Hapus"/>
+            </button>
         </div>
         <Transition.Root show={modal} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={setModal}>

@@ -1,7 +1,6 @@
 'use client';
 
 import { Fragment, useState, SyntheticEvent } from "react";
-import { useRouter } from "next/navigation";
 import { Dialog, Transition } from '@headlessui/react'
 import axios from 'axios';
 
@@ -10,7 +9,6 @@ export default function AddUmum() {
     const [title, setTitle] = useState("");
     const [link, setLink] = useState("");
     const [isMutating, setIsMutating] = useState(false);
-    const router = useRouter();
 
     async function handleSubmit(e: SyntheticEvent) {
         e.preventDefault();
@@ -26,7 +24,6 @@ export default function AddUmum() {
             console.log("Error memuat database: ", error)
             return null
         }
-        router.refresh();
         setModal(false);
         setIsMutating(false)
         setTitle("");
@@ -36,7 +33,7 @@ export default function AddUmum() {
 
   return (
     <div>
-        <button type="button" onClick={()=>setModal(true)} className="w-8 h-8 rounded-full bg-blue-500 font-semibold text-lg shadow-md hover:text-white hover:bg-blue-700">+</button>
+        <button type="button" onClick={()=>setModal(true)} className="w-8 h-8 rounded-full bg-blue-500 font-semibold text-lg shadow-md text-white hover:opacity-80">+</button>
         <Transition.Root show={modal} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={setModal}>
                 <Transition.Child
