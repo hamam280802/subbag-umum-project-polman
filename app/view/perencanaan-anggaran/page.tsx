@@ -48,7 +48,7 @@ export default function Perencanaan_Anggaran() {
                         <p className="sm:text-2xl text-xl font-semibold">Fungsi Perencanaan Anggaran</p>
                         <AddRencana/>
                     </div>
-                    <input type="text" onChange={searchLink} placeholder="Cari link disini" className="p-2 border shadow-inner bg-gray-50 rounded-lg w-96 focus:outline-none"/>
+                    <input type="text" onChange={searchLink} placeholder="Cari link disini" className="p-2 border shadow-inner bg-gray-50 rounded-lg w-full sm:w-96 focus:outline-none"/>
                 </div>
                     <div className="overflow-y-auto bg-gray-100 rounded-xl shadow-inner sm:h-5/6 border-2">
                         <ul className="p-2 sm:p-4">{
