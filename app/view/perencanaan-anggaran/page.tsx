@@ -43,15 +43,15 @@ export default function Perencanaan_Anggaran() {
 
             <main className="flex absolute w-full h-full">
                 <div className="p-5 w-full">
-                <div className="mb-5 flex justify-between">
+                <div className="mb-5 sm:flex justify-between space-y-4 sm:space-y-0">
                     <div className="space-x-2 flex items-center">
-                        <p className="text-2xl font-semibold">Fungsi Kepegawaian</p>
+                        <p className="sm:text-2xl text-xl font-semibold">Fungsi Perencanaan Anggaran</p>
                         <AddRencana/>
                     </div>
                     <input type="text" onChange={searchLink} placeholder="Cari link disini" className="p-2 border shadow-inner bg-gray-50 rounded-lg w-96 focus:outline-none"/>
                 </div>
-                    <div className="overflow-y-auto bg-gray-100 rounded-xl shadow-inner h-5/6 border-2">
-                        <ul className="p-4">{
+                    <div className="overflow-y-auto bg-gray-100 rounded-xl shadow-inner sm:h-5/6 border-2">
+                        <ul className="p-2 sm:p-4">{
                             searchTag ? 
                                 search.map((linkmans:{title: string, link:string, _id:number, id:number}) => (
                                     <div key={`${linkmans._id}`} className="flex justify-between">

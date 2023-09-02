@@ -8,6 +8,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import axios from 'axios'
 import Datetime from "react-datetime";
 import 'react-datetime/css/react-datetime.css';
+import Image from 'next/image';
 
 
 interface Event {
@@ -143,7 +144,8 @@ export default function Calendar() {
 
   return (
     <>
-      <main className="flex min-h-screen flex-col px-5 py-10">
+    <div className='sm:hidden mt-64 text-xl text-gray-200 font-bold text-center'>Jadwal hanya bisa dibuka lewat komputer</div>
+      <main className="hidden sm:flex min-h-screen flex-col px-5 pt-10 pb-20">
         <div className="grid grid-cols-2">
           <div className="col-span-2">
             <FullCalendar
@@ -167,9 +169,7 @@ export default function Calendar() {
             />
           </div>
         </div>
-        <div className='mt-10 flex justify-end'>
-          <a className="px-10 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-md shadow-md border font-semibold cursor-pointer text-center z-10" href="/">Kembali</a>
-        </div>
+        <a href="/" className="fixed bottom-5 right-6 bg-blue-500 text-white py-2 px-6 rounded-md font-semibold text-lg transition ease-in-out hover:-translate-y-1 hover:scale-110 z-10"><Image width={30} height={30} src="/icons/home.png" alt="Beranda"/></a>
         <Transition.Root show={showDeleteModal} as={Fragment}>
           <Dialog as="div" className="relative z-10" onClose={setShowDeleteModal}>
             <Transition.Child

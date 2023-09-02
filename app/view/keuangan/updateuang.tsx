@@ -18,6 +18,7 @@ export default function UpdateUang(linkuang: ItemKeuangan) {
     const [newLink, setNewLink] = useState(linkuang.link);
 
     async function handleUpdate(e: SyntheticEvent) {
+        e.preventDefault();
         setIsMutating(true)
         try {
             const data = {newTitle, newLink}

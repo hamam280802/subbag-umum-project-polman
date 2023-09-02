@@ -18,6 +18,7 @@ export default function UpdateUmum(linkumum: ItemUmum) {
     const [newLink, setNewLink] = useState(linkumum.link);
 
     async function handleUpdate(e: SyntheticEvent) {
+        e.preventDefault();
         setIsMutating(true)
         try {
             const data = {newTitle, newLink}

@@ -32,19 +32,21 @@ export default function Dashboard() {
     <div>
         <Header/>
         <main>
-            <div className="mx-5 mt-10">
+            <div className="hidden sm:flex mx-5 mt-10">
                 <a className="px-10 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-md shadow-md border font-semibold hover:cursor-pointer" href="/view/calendar">Buat jadwal</a>
             </div>
-            <div className="mx-5 my-5 overflow-y-auto bg-gray-100 rounded-xl shadow-inner h-72 border-l-2 border-t-2 border-b-2">
+            <div className="mx-5 my-5 overflow-y-auto bg-gray-100 rounded-xl shadow-inner sm:h-72 border-l-2 border-t-2 border-b-2">
                 <ul className="p-4 space-y-3">{
                     data.map((calevent: {title: string, start: Date, end: Date, id: number}) => (
-                        <li key={`${calevent.id}`} className="p-4 w-full border shadow-lg text-lg bg-white font-semibold rounded-lg">
+                        <li key={`${calevent.id}`} className="p-2 sm:p-4 w-full border shadow-lg sm:text-lg bg-white font-semibold rounded-lg">
                             <p>{calevent.title}</p><p>{formatDateTime(calevent.start)} - {formatDateTime(calevent.end)}</p>
                         </li>
                     ))
                 }</ul>
             </div>
-            <ImageEl/>
+            <div className="hidden lg:block">
+                <ImageEl/>
+            </div>
         </main>
     </div>
   )

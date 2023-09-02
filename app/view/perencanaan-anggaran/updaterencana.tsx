@@ -18,10 +18,11 @@ export default function UpdateRencana(linkrencana: ItemPerencanaan) {
     const [newLink, setNewLink] = useState(linkrencana.link);
     
     async function handleUpdate(e: SyntheticEvent) {
+        e.preventDefault();
         setIsMutating(true)
         try {
             const data = {newTitle, newLink}
-            const res = await axios.put(`/api/emps/${linkrencana._id}`, data)
+            const res = await axios.put(`/api/mans/${linkrencana._id}`, data)
             if(res.status !== 200){
                 throw new Error("gagal mengubah list")
             }

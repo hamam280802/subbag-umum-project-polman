@@ -18,6 +18,7 @@ export default function UpdatePegawai(linkpegawai: ItemKepegawaian) {
     const [newLink, setNewLink] = useState(linkpegawai.link);
 
     async function handleUpdate(e: SyntheticEvent) {
+        e.preventDefault();
         setIsMutating(true)
         try {
             const data = {newTitle, newLink}
