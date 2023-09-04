@@ -8,9 +8,14 @@ export default function Header({title}:any) {
   const [showModal, setShowModal] = useState(false);
   return (
     <div>
-        <header className="bg-blue-500 px-5 pt-8 pb-5 space-y-5 shadow-xl">
-            <div className="right-5 top-4 absolute flex space-x-4">
-              <Image width={160} height={40} src={"/icons/Logo_berAKHLAK.png"} alt="ASN Berakhlak"/>
+        <header className="bg-blue-500 px-5 sm:pt-8 pt-20 pb-5 space-y-5 shadow-xl">
+            <div className="right-0 top-2 absolute sm:flex hidden">
+              <Image width={300} height={10} src={"/icons/berakhlak.png"} alt="ASN Berakhlak"/>
+              <Image width={300} height={10} src={"/icons/Header-Frontend-Besar-ind.png"} alt="BPS Kabupaten Pasangkayu"/>
+            </div>
+            <div className="right-0 top-0 absolute sm:hidden flex justify-center">
+              <Image width={200} height={10} src={"/icons/berakhlak.png"} alt="ASN Berakhlak"/>
+              <Image width={200} height={10} src={"/icons/Header-Frontend-Besar-ind.png"} alt="BPS Kabupaten Pasangkayu"/>
             </div>
             <div>
               <h1 className="text-5xl text-white font-bold text-center sm:text-left">EFEKSI</h1>

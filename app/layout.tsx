@@ -4,8 +4,8 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Subbag Umum',
-  description: 'Menyimpan link website yang dibutuhkan',
+  title: 'Efeksi - Efesiensi Kinerja Sub Bagian Umum BPS Kabupaten Pasangkayu',
+  description: 'Meningkatkan efesiensitas kinerja sub bagian umum',
 }
 
 export default function RootLayout({
