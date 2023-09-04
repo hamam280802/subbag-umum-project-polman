@@ -144,8 +144,8 @@ export default function Calendar() {
 
   return (
     <>
-    <div className='sm:hidden mt-64 text-xl text-gray-200 font-bold text-center'>Jadwal hanya bisa dibuka lewat komputer</div>
-      <main className="hidden sm:flex min-h-screen flex-col px-5 pt-10 pb-20">
+    <div className='md:hidden mt-64 text-xl text-gray-200 font-bold text-center'>Perbesar layar untuk melihat jadwal</div>
+      <main className="hidden md:flex min-h-screen flex-col px-5 pt-10 pb-20">
         <div className="grid grid-cols-2">
           <div className="col-span-2">
             <FullCalendar
