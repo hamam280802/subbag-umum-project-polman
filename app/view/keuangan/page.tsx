@@ -55,7 +55,7 @@ export default function Keuangan() {
                             searchTag ?
                                 search.map((linkmons:{title: string, link:string, _id:number, id:number}) => (
                                     <div key={`${linkmons._id}`} className="flex justify-between">
-                                        <a href={linkmons.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
+                                        <a href={linkmons.link} target="_blank" className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
                                             <p>{linkmons.title}</p>
                                         </li></a>
                                         <DeleteUang {...linkmons}/>
@@ -64,7 +64,7 @@ export default function Keuangan() {
                             :
                                 data.map((linkmons:{title: string, link:string, _id:number, id:number}) => (
                                     <div key={`${linkmons._id}`} className="flex justify-between">
-                                        <a href={linkmons.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
+                                        <a href={linkmons.link} target="_blank" className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
                                             <p>{linkmons.title}</p>
                                         </li></a>
                                         <DeleteUang {...linkmons}/>

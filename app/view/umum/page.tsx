@@ -55,7 +55,7 @@ export default function Umum() {
                             searchTag ?
                                 search.map((linkpubs:{title: string, link:string, _id:number, id:number}) => (
                                     <div key={`${linkpubs._id}`} className="flex justify-between">
-                                        <a href={linkpubs.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
+                                        <a href={linkpubs.link} target="_blank" className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
                                             <p>{linkpubs.title}</p>
                                         </li></a>
                                         <DeleteUMum {...linkpubs}/>
@@ -64,7 +64,7 @@ export default function Umum() {
                             :
                                 data.map((linkpubs:{title: string, link:string, _id:number, id:number}) => (
                                     <div key={`${linkpubs._id}`} className="flex justify-between">
-                                        <a href={linkpubs.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
+                                        <a href={linkpubs.link} target="_blank" className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
                                             <p>{linkpubs.title}</p>
                                         </li></a>
                                         <DeleteUMum {...linkpubs}/>

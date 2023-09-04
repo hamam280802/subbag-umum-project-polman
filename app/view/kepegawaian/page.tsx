@@ -55,7 +55,7 @@ export default function Kepegawaian() {
                             searchTag ?
                                 search.map((linkemp:{title: string, link:string, _id:number, id:number}) => (
                                     <div key={`${linkemp._id}`} className="flex justify-between">
-                                        <a href={linkemp.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
+                                        <a href={linkemp.link} target="_blank" className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
                                             <p>{linkemp.title}</p>
                                         </li></a>
                                         <DeletePegawai {...linkemp}/>
@@ -64,7 +64,7 @@ export default function Kepegawaian() {
                             :
                                 data.map((linkemp:{title: string, link:string, _id:number, id:number}) => (
                                     <div key={`${linkemp._id}`} className="flex justify-between">
-                                        <a href={linkemp.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
+                                        <a href={linkemp.link} target="_blank" className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
                                             <p>{linkemp.title}</p>
                                         </li></a>
                                         <DeletePegawai {...linkemp}/>

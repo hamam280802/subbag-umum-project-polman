@@ -55,7 +55,7 @@ export default function Perencanaan_Anggaran() {
                             searchTag ? 
                                 search.map((linkmans:{title: string, link:string, _id:number, id:number}) => (
                                     <div key={`${linkmans._id}`} className="flex justify-between">
-                                        <a href={linkmans.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
+                                        <a href={linkmans.link} target="_blank" className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
                                             <p>{linkmans.title}</p>
                                         </li></a>
                                         <DeleteRencana {...linkmans}/>
@@ -64,7 +64,7 @@ export default function Perencanaan_Anggaran() {
                             :
                                 data.map((linkmans:{title: string, link:string, _id:number, id:number}) => (
                                     <div key={`${linkmans._id}`} className="flex justify-between">
-                                        <a href={linkmans.link} className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
+                                        <a href={linkmans.link} target="_blank" className="w-full mr-2 mb-2"><li className="p-2 w-full border shadow-lg bg-white font-semibold text-xl rounded-lg hover:bg-gray-100">
                                             <p>{linkmans.title}</p>
                                         </li></a>
                                         <DeleteRencana {...linkmans}/>
