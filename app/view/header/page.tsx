@@ -26,7 +26,7 @@ export default function Header({title}:any) {
                 <ul className="space-x-8 flex font-semibold text-lg">
                     <a href="/view/kepegawaian" className={title == "kepegawaian" ? 'text-white bg-blue-500 rounded-full cursor-default p-2' : 'hover:text-white hover:bg-blue-500 hover:rounded-full hover:cursor-pointer p-2'}><li>Kepegawaian</li></a>
                     <a href="/view/keuangan" className={title == "keuangan" ? 'text-white bg-blue-500 rounded-full cursor-default p-2' :'hover:text-white hover:bg-blue-500 hover:rounded-full hover:cursor-pointer p-2'}><li>Keuangan</li></a>
-                    <a href="/view/perencanaan-anggaran" className={title == "perencanaan-anggaran" ? 'text-white bg-blue-500 rounded-full cursor-default p-2' : 'hover:text-white hover:bg-blue-500 hover:rounded-full hover:cursor-pointer p-2'}><li>Perencanaan Anggaran</li></a>
+                    <a href="/view/perencanaan-anggaran" className={title == "perencanaan-anggaran" ? 'text-white bg-blue-500 rounded-full cursor-default p-2' : 'hover:text-white hover:bg-blue-500 hover:rounded-full hover:cursor-pointer p-2'}><li>Perencanaan</li></a>
                     <a href="/view/umum" className={title == "umum" ? 'text-white bg-blue-500 rounded-full cursor-default p-2' : 'hover:text-white hover:bg-blue-500 hover:rounded-full hover:cursor-pointer p-2'}><li>Umum</li></a>
                 </ul>
             </div>
