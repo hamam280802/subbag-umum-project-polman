@@ -62,10 +62,11 @@ export default function Calendar() {
     getCalendar();
   }, [])
 
-  function handleDateClick(arg: { date: Date, allDay: boolean }) {
-    setNewEvent({ ...newEvent, start: arg.date, allDay: arg.allDay, id: new Date().getTime() })
+  function handleDateRangeSelect(arg: { start: Date, end: Date, allDay: boolean}) {
+    setNewEvent({ ...newEvent, start: arg.start, end: arg.end, allDay: arg.allDay, id: new Date().getTime()})
     setShowModal(true)
-    setStart(arg.date)
+    setStart(arg.start)
+    setEnd(arg.end)
     setAllDay(arg.allDay)
     setId(new Date().getTime())
   }
@@ -164,12 +165,13 @@ export default function Calendar() {
               nowIndicator={true}
               selectable={true}
               selectMirror={true}
-              dateClick={handleDateClick}
+              select={handleDateRangeSelect}
               eventClick={(data) => handleDeleteModal(data)}
+              eventBackgroundColor='green'
             />
           </div>
         </div>
-        <a href="/" className="fixed bottom-5 right-6 bg-blue-500 text-white py-2 px-6 rounded-md font-semibold text-lg transition ease-in-out hover:-translate-y-1 hover:scale-110 z-10"><Image width={30} height={30} src="/icons/home.png" alt="Beranda"/></a>
+        <a href="/" className="fixed bottom-5 right-6 bg-green-500 text-white py-2 px-6 rounded-md font-semibold text-lg transition ease-in-out hover:-translate-y-1 hover:scale-110 z-10"><Image width={30} height={30} src="/icons/home.png" alt="Beranda"/></a>
         <Transition.Root show={showDeleteModal} as={Fragment}>
           <Dialog as="div" className="relative z-10" onClose={setShowDeleteModal}>
             <Transition.Child
@@ -283,7 +285,7 @@ export default function Calendar() {
                           <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                             <button
                               type="submit"
-                              className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:col-start-2 disabled:opacity-25"
+                              className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 sm:col-start-2 disabled:opacity-25"
                               disabled={title === ''}
                             >
                               Buat

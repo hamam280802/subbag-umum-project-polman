@@ -33,7 +33,7 @@ export default function Dashboard() {
         <Header/>
         <main>
             <div className="hidden md:flex mx-5 mt-10">
-                <a className="px-10 py-3 bg-blue-600 hover:bg-blue-500 text-white rounded-md shadow-md border font-semibold hover:cursor-pointer" href="/view/calendar">Buat jadwal</a>
+                <a className="px-10 py-3 bg-green-600 hover:bg-green-500 text-white rounded-md shadow-md border font-semibold hover:cursor-pointer" href="/view/calendar">Buat jadwal</a>
             </div>
             <div className="mx-5 my-5 overflow-y-auto bg-gray-100 rounded-xl shadow-inner sm:h-72 border-l-2 border-t-2 border-b-2">
                 <ul className="p-4 space-y-3">{

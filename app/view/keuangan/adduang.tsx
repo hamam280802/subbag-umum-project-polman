@@ -33,7 +33,7 @@ export default function AddUang() {
 
   return (
     <div>
-        <button type="button" onClick={()=>setModal(true)} className="w-8 h-8 rounded-full bg-blue-500 font-semibold text-lg shadow-md text-white hover:opacity-80">+</button>
+        <button type="button" onClick={()=>setModal(true)} className="w-8 h-8 rounded-full bg-green-500 font-semibold text-lg shadow-md text-white hover:opacity-80">+</button>
         <Transition.Root show={modal} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={setModal}>
                 <Transition.Child
@@ -74,9 +74,9 @@ export default function AddUang() {
                                             </div>
                                             <div className="mt-5 sm:mt-6 sm:grid sm:grid-flow-row-dense sm:grid-cols-2 sm:gap-3">
                                                 {!isMutating ? (
-                                                    <button disabled={title === '' || link === ''} type="submit" className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-md hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:col-start-2 disabled:opacity-25">Input</button>
+                                                    <button disabled={title === '' || link === ''} type="submit" className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-md hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 sm:col-start-2 disabled:opacity-25">Input</button>
                                                 ) : (
-                                                    <button disabled className="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-semibold text-white shadow-md hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 sm:col-start-2">Memuat...</button>
+                                                    <button disabled className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-md hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 sm:col-start-2">Memuat...</button>
                                                 )}
                                                 <button type="button" onClick={()=>{setModal(false); setTitle(""); setLink("");}} className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-md ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:col-start-1 sm:mt-0">Batal</button>
                                             </div>

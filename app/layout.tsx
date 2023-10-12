@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'Efeksi - Efesiensi Kinerja Sub Bagian Umum BPS Kabupaten Pasangkayu',
+  title: 'Efeksi - Efesiensi Kinerja Sub Bagian Umum BPS Kabupaten Polewali Mandar',
   description: 'Meningkatkan efesiensitas kinerja sub bagian umum',
 }
 
